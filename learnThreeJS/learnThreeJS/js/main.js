@@ -20,3 +20,22 @@ renderer.setSize(window.innerWidth,
 //  to render app at 1/2 resolution
 
 document.body.appendChild(renderer.domElement);
+//add the renderer object to the canvas element.
+
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+//BoxGeometry streamlines the setup of all the vertices
+//  and the fill of the cube
+var material = new THREE.MeshBasicMaterial(
+    { color: 0x00ff00 }
+);
+//MeshBasicMaterial will be used to paint
+//the cube a color (in this case)
+var cube = new THREE.Mesh(geometry, material);
+//Mesh takes a geometry, and a material,
+//  and applies the material to the geometry
+//  which can be inserted into the scene
+scene.add(cube);
+//cube will now be added to the scene
+
+camera.position.z = 5;
+//set camera's z position to 5

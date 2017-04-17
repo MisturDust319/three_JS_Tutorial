@@ -4,12 +4,15 @@
 //  a scene, a camera, and a renderer
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
-    75 // field of view
-    window.innerWidth/window.innerHeight, //aspect ratio
-    //use width/height every time
-    0.1, 1000 //min/max clipping plane
-    )
-
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1, 1000
+);
+// args
+// field of view
+// aspect ratio
+//     use width/height every time
+//     min/max clipping plane
 var renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth,
@@ -39,3 +42,17 @@ scene.add(cube);
 
 camera.position.z = 5;
 //set camera's z position to 5
+
+//a simple render loop
+//this will make a loop to draw scene 60 times
+//  a sec
+//
+function render() {
+    requestAnimationFrame(render);
+    //requestAnimationFrame() is like setInterval()
+    //  but can do other things, like automatically
+    //  pause when user chgs tabs
+    renderer.render(scene, camera);
+}
+
+render();
